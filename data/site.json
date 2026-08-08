@@ -1,0 +1,37 @@
+{
+  "brand": {
+    "name": "Deepak Wadhwa",
+    "shortName": "DW",
+    "tagline": "Financial Education | Trading | Wealth Creation",
+    "description": "Financial educator, trader, and wealth-creation mentor with 20+ years of experience."
+  },
+  "contact": {
+    "email": "hello@deepakwadhwa.com",
+    "phone": "+91 90000 00000",
+    "whatsapp": "https://wa.me/919000000000"
+  },
+  "social": {
+    "youtube": "#",
+    "instagram": "#",
+    "linkedin": "#",
+    "twitter": "#",
+    "telegram": "#"
+  },
+  "stats": [
+    { "label": "Years Experience", "value": 20, "suffix": "+" },
+    { "label": "Students Mentored", "value": 5000, "suffix": "+" },
+    { "label": "Community Members", "value": 12000, "suffix": "+" },
+    { "label": "Content Reach", "value": 1000, "suffix": "K+" }
+  ],
+  "forms": {
+    "emailjs": {
+      "publicKey": "",
+      "contactServiceId": "",
+      "contactTemplateId": "",
+      "newsletterServiceId": "",
+      "newsletterTemplateId": ""
+    },
+    "googleAppsScriptWebhook": ""
+  },
+  "intents": ["Learn", "Workshop", "Business", "Media", "Speaking", "Partnership"]
+}

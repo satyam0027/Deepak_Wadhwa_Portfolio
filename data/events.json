@@ -1,0 +1,30 @@
+{
+  "events": [
+    {
+      "id": "event-001",
+      "title": "Market Learning Masterclass",
+      "type": "Masterclass",
+      "status": "Upcoming",
+      "date": "2026-09-15",
+      "time": "18:00 IST",
+      "location": "Online",
+      "description": "An educational session on structured market learning — frameworks, not forecasts.",
+      "registerUrl": "/contact/?intent=Workshop",
+      "recapUrl": "",
+      "image": ""
+    },
+    {
+      "id": "event-002",
+      "title": "Risk Awareness Workshop",
+      "type": "Workshop",
+      "status": "Past",
+      "date": "2026-05-10",
+      "time": "11:00 IST",
+      "location": "Online",
+      "description": "A practical workshop on position sizing and capital discipline.",
+      "registerUrl": "",
+      "recapUrl": "/media/",
+      "image": ""
+    }
+  ]
+}

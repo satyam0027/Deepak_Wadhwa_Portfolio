@@ -1,0 +1,64 @@
+{
+  "categories": [
+    "Market Insights",
+    "Trading",
+    "Options",
+    "Risk Management",
+    "Psychology",
+    "Financial Education",
+    "Wealth Creation"
+  ],
+  "articles": [
+    {
+      "id": "sample-article",
+      "slug": "sample-article",
+      "title": "Why process beats prediction in market learning",
+      "excerpt": "A short look at building habits that compound — journals, risk units, and calm review — before chasing the next idea.",
+      "category": "Financial Education",
+      "thumbnail": "",
+      "author": "Deepak Wadhwa",
+      "date": "2026-08-01",
+      "readTime": "5 min",
+      "metaTitle": "Why process beats prediction | DW Insights",
+      "metaDescription": "How disciplined process, risk awareness, and review habits help you learn markets without the noise.",
+      "href": "/insights/sample-article/",
+      "featured": true,
+      "bodyHtmlPath": "",
+      "relatedSlugs": []
+    },
+    {
+      "id": "risk-units",
+      "slug": "sample-article",
+      "title": "Risk units: a simple way to size every idea",
+      "excerpt": "Define how much of your capital you are willing to put at risk before you decide whether an idea deserves attention.",
+      "category": "Risk Management",
+      "thumbnail": "",
+      "author": "Deepak Wadhwa",
+      "date": "2026-07-18",
+      "readTime": "4 min",
+      "metaTitle": "Risk units explained | DW Insights",
+      "metaDescription": "A practical introduction to risk units for learners who want capital preservation first.",
+      "href": "/insights/sample-article/",
+      "featured": true,
+      "bodyHtmlPath": "",
+      "relatedSlugs": []
+    },
+    {
+      "id": "options-literacy",
+      "slug": "sample-article",
+      "title": "Options literacy before options activity",
+      "excerpt": "Understand mechanics and risk profiles first — so options become a tool for thinking, not a shortcut.",
+      "category": "Options",
+      "thumbnail": "",
+      "author": "Deepak Wadhwa",
+      "date": "2026-07-02",
+      "readTime": "6 min",
+      "metaTitle": "Options literacy first | DW Insights",
+      "metaDescription": "Why understanding options mechanics and risk comes before any structured practice.",
+      "href": "/insights/sample-article/",
+      "featured": false,
+      "bodyHtmlPath": "",
+      "relatedSlugs": []
+    }
+  ]
+}

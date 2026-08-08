@@ -1,0 +1,199 @@
+{
+  "programs": [
+    {
+      "id": "trading",
+      "slug": "trading",
+      "title": "Trading Program",
+      "tagline": "Build a disciplined foundation for market participation.",
+      "description": "A structured learning path covering market basics, analysis frameworks, and practical application — taught as education, not signals.",
+      "level": "Beginner",
+      "levels": ["Beginner", "Intermediate"],
+      "duration": "8–12 weeks (flexible pacing)",
+      "image": "",
+      "icon": "chart",
+      "href": "/programs/trading/",
+      "featured": true,
+      "whoItsFor": [
+        "New learners seeking structured market education",
+        "Professionals who want a clear foundation before going deeper",
+        "Anyone tired of tip-based, unstructured content"
+      ],
+      "whatYoullLearn": [
+        "Core market concepts and how instruments work",
+        "Simple analysis frameworks you can practise",
+        "Journaling and review habits that build discipline"
+      ],
+      "curriculum": [
+        {
+          "module": 1,
+          "title": "Foundations",
+          "topics": ["Market structure", "Orders & execution basics", "Learning routine"]
+        },
+        {
+          "module": 2,
+          "title": "Analysis frameworks",
+          "topics": ["Chart reading basics", "Context over prediction", "Practice drills"]
+        },
+        {
+          "module": 3,
+          "title": "Process & review",
+          "topics": ["Trade journal", "Weekly review", "Common mistakes"]
+        }
+      ],
+      "learningFormat": ["Live sessions", "Recorded modules", "Practice exercises"],
+      "outcomes": [
+        "A clear understanding of disciplined market learning",
+        "A personal study routine you can sustain",
+        "Language and frameworks to evaluate opportunities calmly"
+      ],
+      "faq": [
+        {
+          "question": "Who is this program for?",
+          "answer": "Beginners and early intermediates who want structured education — not tips or guaranteed outcomes."
+        },
+        {
+          "question": "Is this a signals or tips service?",
+          "answer": "No. This is an educational program focused on frameworks, process, and risk awareness."
+        },
+        {
+          "question": "Do I need prior experience?",
+          "answer": "No prior trading experience is required. Curiosity and commitment to practice are enough to start."
+        }
+      ]
+    },
+    {
+      "id": "options",
+      "slug": "options",
+      "title": "Options Program",
+      "tagline": "Understand options as a structured learning discipline.",
+      "description": "Education-focused options learning for informed decision-making — mechanics, risk, and thoughtful application.",
+      "level": "Intermediate",
+      "levels": ["Intermediate", "Advanced"],
+      "duration": "6–10 weeks",
+      "image": "",
+      "icon": "options",
+      "href": "/programs/options/",
+      "featured": true,
+      "whoItsFor": [
+        "Learners who understand basic markets and want options literacy",
+        "Professionals who want to study options without hype"
+      ],
+      "whatYoullLearn": [
+        "How options contracts work",
+        "Risk profiles of common structures",
+        "When education says “stand aside” matters as much as “act”"
+      ],
+      "curriculum": [
+        {
+          "module": 1,
+          "title": "Options mechanics",
+          "topics": ["Calls & puts", "Premium & Greeks intro", "Expiry basics"]
+        },
+        {
+          "module": 2,
+          "title": "Risk-first structures",
+          "topics": ["Defined-risk ideas", "Position sizing", "Scenario thinking"]
+        }
+      ],
+      "learningFormat": ["Live sessions", "Worked examples", "Q&A"],
+      "outcomes": [
+        "Clearer options vocabulary and risk awareness",
+        "Ability to evaluate a structure before acting"
+      ],
+      "faq": [
+        {
+          "question": "Is this suitable for complete beginners?",
+          "answer": "Best after the Trading Program foundations — or equivalent market basics."
+        }
+      ]
+    },
+    {
+      "id": "risk-management",
+      "slug": "risk-management",
+      "title": "Risk Management Program",
+      "tagline": "Protect capital through process and discipline.",
+      "description": "Frameworks for position sizing, risk control, and capital preservation — the backbone of sustainable learning.",
+      "level": "Intermediate",
+      "levels": ["Beginner", "Intermediate", "Advanced"],
+      "duration": "4–6 weeks",
+      "image": "",
+      "icon": "shield",
+      "href": "/programs/risk-management/",
+      "featured": true,
+      "whoItsFor": [
+        "Anyone who has jumped into markets without a risk plan",
+        "Learners who want capital preservation as a core skill"
+      ],
+      "whatYoullLearn": [
+        "Position sizing models you can apply",
+        "Drawdown awareness and stop frameworks",
+        "How to design personal risk rules"
+      ],
+      "curriculum": [
+        {
+          "module": 1,
+          "title": "Capital & risk units",
+          "topics": ["Risk per idea", "Account heat", "Simple math that matters"]
+        },
+        {
+          "module": 2,
+          "title": "Process under pressure",
+          "topics": ["Rules before emotion", "Review loops", "Recovery planning"]
+        }
+      ],
+      "learningFormat": ["Workshops", "Templates", "Case reviews"],
+      "outcomes": [
+        "A written personal risk policy",
+        "Habit of sizing before deciding"
+      ],
+      "faq": [
+        {
+          "question": "Will this teach me how to make guaranteed profits?",
+          "answer": "No. It teaches how to manage uncertainty and protect capital while you learn."
+        }
+      ]
+    },
+    {
+      "id": "trading-psychology",
+      "slug": "trading-psychology",
+      "title": "Trading Psychology",
+      "tagline": "Build the mindset behind consistent learning.",
+      "description": "Behavioral frameworks for discipline, patience, and process adherence.",
+      "level": "Advanced",
+      "levels": ["Intermediate", "Advanced"],
+      "duration": "Coming soon",
+      "image": "",
+      "icon": "mind",
+      "href": "/programs/trading-psychology/",
+      "featured": false,
+      "comingSoon": true,
+      "whoItsFor": [],
+      "whatYoullLearn": [],
+      "curriculum": [],
+      "learningFormat": [],
+      "outcomes": [],
+      "faq": []
+    },
+    {
+      "id": "live-mentorship",
+      "slug": "live-mentorship",
+      "title": "Live Mentorship",
+      "tagline": "Guided learning with live interaction.",
+      "description": "Mentorship-format sessions focused on education and accountability.",
+      "level": "Advanced",
+      "levels": ["Intermediate", "Advanced"],
+      "duration": "Coming soon",
+      "image": "",
+      "icon": "users",
+      "href": "/programs/live-mentorship/",
+      "featured": false,
+      "comingSoon": true,
+      "whoItsFor": [],
+      "whatYoullLearn": [],
+      "curriculum": [],
+      "learningFormat": [],
+      "outcomes": [],
+      "faq": []
+    }
+  ]
+}

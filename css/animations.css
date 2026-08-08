@@ -1,0 +1,248 @@
+/* Shared animation tokens + scroll/interaction motion
+   Subtle, authority-brand — transform/opacity only (FAQ uses grid-rows). */
+
+:root {
+  --anim-duration: 600ms;
+  --anim-duration-fast: 400ms;
+  --anim-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --anim-distance: 32px;
+}
+
+/* ---------- Scroll reveal base ---------- */
+[data-animate] {
+  opacity: 0;
+  transition:
+    opacity var(--anim-duration) var(--anim-ease),
+    transform var(--anim-duration) var(--anim-ease);
+  will-change: opacity, transform;
+}
+
+[data-animate="fade-up"] {
+  transform: translateY(var(--anim-distance));
+}
+
+[data-animate="fade-in"] {
+  transform: none;
+}
+
+[data-animate="fade-left"] {
+  transform: translateX(calc(var(--anim-distance) * -0.75));
+}
+
+[data-animate="fade-right"] {
+  transform: translateX(calc(var(--anim-distance) * 0.75));
+}
+
+[data-animate].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Stagger container: children animate individually */
+[data-animate="stagger"] {
+  opacity: 1;
+  transform: none;
+  will-change: auto;
+}
+
+[data-animate="stagger"] > *,
+[data-animate="stagger"] .stagger-item {
+  opacity: 0;
+  transform: translateY(var(--anim-distance));
+  transition:
+    opacity var(--anim-duration) var(--anim-ease),
+    transform var(--anim-duration) var(--anim-ease);
+  will-change: opacity, transform;
+}
+
+[data-animate="stagger"].is-visible > *,
+[data-animate="stagger"].is-visible .stagger-item {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Hero entrance (page load, not scroll) ---------- */
+[data-hero-step] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity var(--anim-duration) var(--anim-ease),
+    transform var(--anim-duration) var(--anim-ease);
+}
+
+[data-hero-step].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Testimonial carousel (horizontal snap) ---------- */
+.carousel {
+  display: flex;
+  gap: var(--space-5);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: var(--space-3);
+  cursor: grab;
+}
+
+.carousel.is-dragging {
+  cursor: grabbing;
+  scroll-behavior: auto;
+  user-select: none;
+}
+
+.carousel::-webkit-scrollbar {
+  height: 4px;
+}
+
+.carousel::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 2px;
+}
+
+.carousel > * {
+  flex: 0 0 min(100%, 22rem);
+  scroll-snap-align: start;
+}
+
+@media (min-width: 768px) {
+  .carousel > * {
+    flex-basis: min(100%, 28rem);
+  }
+}
+
+/* ---------- Media logo marquee ---------- */
+.marquee {
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.marquee__track {
+  display: flex;
+  width: max-content;
+  gap: var(--space-8);
+  align-items: center;
+  animation: marquee-scroll 36s linear infinite;
+}
+
+.marquee:hover .marquee__track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ---------- FAQ accordion (grid-rows) ---------- */
+.faq details {
+  border-bottom: 1px solid var(--color-border);
+  padding: 0;
+}
+
+.faq summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--color-navy);
+  list-style: none;
+  padding: var(--space-4) 0;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq__content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--anim-duration-fast) var(--anim-ease);
+}
+
+.faq details[open] > .faq__content {
+  grid-template-rows: 1fr;
+}
+
+.faq__content-inner {
+  overflow: hidden;
+}
+
+.faq__content-inner p {
+  margin: 0 0 var(--space-4);
+  color: var(--color-text-muted);
+}
+
+/* ---------- Resource modal motion ---------- */
+.modal {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity var(--anim-duration-fast) var(--anim-ease),
+    visibility var(--anim-duration-fast);
+}
+
+.modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.modal[hidden]:not(.is-open) {
+  display: none !important;
+}
+
+.modal.is-open[hidden] {
+  display: grid !important;
+}
+
+.modal__panel {
+  transform: scale(0.96);
+  transition: transform var(--anim-duration-fast) var(--anim-ease);
+}
+
+.modal.is-open .modal__panel {
+  transform: scale(1);
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --anim-duration: 0.01ms;
+    --anim-duration-fast: 0.01ms;
+  }
+
+  [data-animate],
+  [data-animate="stagger"] > *,
+  [data-animate="stagger"] .stagger-item,
+  [data-hero-step],
+  .modal,
+  .modal__panel,
+  .faq__content {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  [data-animate="stagger"] {
+    opacity: 1 !important;
+  }
+
+  .marquee__track {
+    animation: none !important;
+    flex-wrap: wrap;
+    width: auto;
+    justify-content: center;
+    row-gap: var(--space-4);
+  }
+
+  .carousel {
+    scroll-behavior: auto;
+  }
+}

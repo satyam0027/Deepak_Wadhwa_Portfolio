@@ -1,0 +1,38 @@
+{
+  "sources": ["YouTube", "Podcast", "Interview", "TV", "Webinar"],
+  "videos": [
+    {
+      "id": "video-001",
+      "title": "Introduction to Financial Education with Deepak Wadhwa",
+      "thumbnail": "",
+      "url": "#",
+      "source": "YouTube",
+      "duration": "12:00",
+      "date": "2026-07-15",
+      "featured": true,
+      "description": "A calm introduction to how Deepak approaches market education."
+    },
+    {
+      "id": "video-002",
+      "title": "Podcast: Learning markets without the noise",
+      "thumbnail": "",
+      "url": "#",
+      "source": "Podcast",
+      "duration": "45:00",
+      "date": "2026-06-01",
+      "featured": false,
+      "description": "A conversation on process, patience, and practical learning."
+    },
+    {
+      "id": "video-003",
+      "title": "Webinar recap: Risk awareness for new learners",
+      "thumbnail": "",
+      "url": "#",
+      "source": "Webinar",
+      "duration": "38:00",
+      "date": "2026-05-20",
+      "featured": false,
+      "description": "Key ideas from a live educational session on risk."
+    }
+  ]
+}

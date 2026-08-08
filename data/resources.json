@@ -1,0 +1,44 @@
+{
+  "resources": [
+    {
+      "id": "resource-001",
+      "title": "Trading Guide",
+      "type": "Guide",
+      "description": "A practical introduction to structured market learning — vocabulary, routines, and first principles.",
+      "thumbnail": "",
+      "fileUrl": "/assets/downloads/trading-guide.pdf",
+      "gated": true,
+      "featured": true
+    },
+    {
+      "id": "resource-002",
+      "title": "Risk Management Guide",
+      "type": "Guide",
+      "description": "Position sizing, risk units, and simple rules that protect capital while you learn.",
+      "thumbnail": "",
+      "fileUrl": "/assets/downloads/risk-management-guide.pdf",
+      "gated": true,
+      "featured": true
+    },
+    {
+      "id": "resource-003",
+      "title": "Market Learning Report",
+      "type": "Report",
+      "description": "A short educational briefing on how to review markets without reacting to every move.",
+      "thumbnail": "",
+      "fileUrl": "/assets/downloads/market-report.pdf",
+      "gated": true,
+      "featured": false
+    },
+    {
+      "id": "resource-004",
+      "title": "Weekly Review Checklist",
+      "type": "Checklist",
+      "description": "A one-page checklist to close your learning week with clarity.",
+      "thumbnail": "",
+      "fileUrl": "/assets/downloads/checklist.pdf",
+      "gated": true,
+      "featured": true
+    }
+  ]
+}

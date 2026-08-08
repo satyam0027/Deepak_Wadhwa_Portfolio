@@ -1,0 +1,32 @@
+{
+  "mentions": [
+    {
+      "id": "media-001",
+      "name": "Business Daily",
+      "logo": "",
+      "url": "#",
+      "featured": true
+    },
+    {
+      "id": "media-002",
+      "name": "Market Weekly",
+      "logo": "",
+      "url": "#",
+      "featured": true
+    },
+    {
+      "id": "media-003",
+      "name": "Finance Forum",
+      "logo": "",
+      "url": "#",
+      "featured": true
+    },
+    {
+      "id": "media-004",
+      "name": "EduInvest",
+      "logo": "",
+      "url": "#",
+      "featured": true
+    }
+  ]
+}

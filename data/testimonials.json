@@ -1,0 +1,52 @@
+{
+  "testimonials": [
+    {
+      "id": "story-001",
+      "type": "case-study",
+      "name": "Rahul Mehta",
+      "role": "Working professional · Learner",
+      "photo": "",
+      "videoThumbnail": "",
+      "videoUrl": "",
+      "resultSummary": "Built a structured learning process",
+      "quote": "I finally have a clear way to study markets instead of chasing every tip.",
+      "before": "Unclear approach and inconsistent learning habits.",
+      "learning": "Frameworks, risk awareness, and disciplined practice.",
+      "after": "A clearer process and more confidence in how I learn.",
+      "featured": true,
+      "programRelated": "trading"
+    },
+    {
+      "id": "story-002",
+      "type": "quote",
+      "name": "Ananya Sharma",
+      "role": "Options learner",
+      "photo": "",
+      "videoThumbnail": "",
+      "videoUrl": "",
+      "resultSummary": "Stronger risk awareness before every decision",
+      "quote": "The focus on process and risk changed how I think about every market decision.",
+      "before": "",
+      "learning": "",
+      "after": "",
+      "featured": true,
+      "programRelated": "options"
+    },
+    {
+      "id": "story-003",
+      "type": "case-study",
+      "name": "Vikram Patel",
+      "role": "Retail learner",
+      "photo": "",
+      "videoThumbnail": "",
+      "videoUrl": "",
+      "resultSummary": "Moved from impulse to process",
+      "quote": "Education first — that framing alone removed a lot of noise.",
+      "before": "Reacting to market moves without a plan.",
+      "learning": "Position sizing, journaling, and emotional discipline.",
+      "after": "A repeatable routine I can stick to week after week.",
+      "featured": false,
+      "programRelated": "risk-management"
+    }
+  ]
+}
