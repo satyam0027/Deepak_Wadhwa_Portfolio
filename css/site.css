@@ -1,3 +1,155 @@
+/* DW site.css — generated */
+/* css/variables.css */
+/* Deepak Wadhwa — design tokens (Navy / White / Gold)
+   Fonts load via non-blocking <link> in HTML — not @import (blocks CSS). */
+
+:root {
+  --color-white: #ffffff;
+  --color-navy: #0b1f3a;
+  --color-navy-deep: #061525;
+  --color-navy-soft: #143156;
+  --color-gold: #b8922a;
+  --color-gold-soft: #d4b45a;
+  --color-gold-muted: rgba(184, 146, 42, 0.12);
+  --color-text: #152033;
+  --color-text-muted: #5c6778;
+  --color-border: #e2e6ec;
+  --color-bg-soft: #f5f7fa;
+  --color-bg-wash: #eef2f7;
+  --color-success: #1f6b4a;
+  --color-error: #9b2c2c;
+
+  --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-body: "Figtree", "Segoe UI", sans-serif;
+
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-md: 1.125rem;
+  --fs-lg: 1.375rem;
+  --fs-xl: 1.75rem;
+  --fs-2xl: 2.25rem;
+  --fs-3xl: clamp(2.25rem, 4vw, 3.25rem);
+  --fs-hero: clamp(2.5rem, 5.5vw, 3.75rem);
+
+  --lh-tight: 1.15;
+  --lh-snug: 1.35;
+  --lh-body: 1.65;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+
+  --container: 72rem;
+  --nav-height: 4.5rem;
+  --radius: 0.25rem;
+  --radius-md: 0.5rem;
+  --shadow-sm: 0 1px 2px rgba(11, 31, 58, 0.06);
+  --shadow-md: 0 8px 24px rgba(11, 31, 58, 0.08);
+  --transition: 200ms ease;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* css/base.css */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  line-height: var(--lh-body);
+  color: var(--color-text);
+  background:
+    radial-gradient(1200px 500px at 10% -10%, rgba(184, 146, 42, 0.08), transparent 55%),
+    radial-gradient(900px 420px at 100% 0%, rgba(11, 31, 58, 0.06), transparent 50%),
+    var(--color-white);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: var(--lh-tight);
+  color: var(--color-navy);
+  margin: 0 0 var(--space-4);
+}
+
+p {
+  margin: 0 0 var(--space-4);
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.container {
+  width: min(100% - 2rem, var(--container));
+  margin-inline: auto;
+}
+
+[data-page-main] {
+  min-height: 50vh;
+  padding-top: var(--nav-height);
+}
+
+[data-page-main]:has(.hero) {
+  padding-top: 0;
+}
+
+/* Scroll / interaction motion → css/animations.css */
+
+/* css/components.css */
 /* ========== Buttons ========== */
 .btn {
   display: inline-flex;
@@ -1112,3 +1264,259 @@ body.nav-open {
 }
 
 /* FAQ accordion motion → css/animations.css */
+
+/* css/pages.css */
+/*
+  STEP 3 — Page-specific layout styles go here.
+*/
+
+/* css/animations.css */
+/* Shared animation tokens + scroll/interaction motion
+   Subtle, authority-brand — transform/opacity only (FAQ uses grid-rows). */
+
+:root {
+  --anim-duration: 600ms;
+  --anim-duration-fast: 400ms;
+  --anim-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --anim-distance: 32px;
+}
+
+/* ---------- Scroll reveal base ---------- */
+[data-animate] {
+  opacity: 0;
+  transition:
+    opacity var(--anim-duration) var(--anim-ease),
+    transform var(--anim-duration) var(--anim-ease);
+  will-change: opacity, transform;
+}
+
+[data-animate="fade-up"] {
+  transform: translateY(var(--anim-distance));
+}
+
+[data-animate="fade-in"] {
+  transform: none;
+}
+
+[data-animate="fade-left"] {
+  transform: translateX(calc(var(--anim-distance) * -0.75));
+}
+
+[data-animate="fade-right"] {
+  transform: translateX(calc(var(--anim-distance) * 0.75));
+}
+
+[data-animate].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Stagger container: children animate individually */
+[data-animate="stagger"] {
+  opacity: 1;
+  transform: none;
+  will-change: auto;
+}
+
+[data-animate="stagger"] > *,
+[data-animate="stagger"] .stagger-item {
+  opacity: 0;
+  transform: translateY(var(--anim-distance));
+  transition:
+    opacity var(--anim-duration) var(--anim-ease),
+    transform var(--anim-duration) var(--anim-ease);
+  will-change: opacity, transform;
+}
+
+[data-animate="stagger"].is-visible > *,
+[data-animate="stagger"].is-visible .stagger-item {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Hero entrance (page load, not scroll) ---------- */
+[data-hero-step] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity var(--anim-duration) var(--anim-ease),
+    transform var(--anim-duration) var(--anim-ease);
+}
+
+[data-hero-step].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Testimonial carousel (horizontal snap) ---------- */
+.carousel {
+  display: flex;
+  gap: var(--space-5);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: var(--space-3);
+  cursor: grab;
+}
+
+.carousel.is-dragging {
+  cursor: grabbing;
+  scroll-behavior: auto;
+  user-select: none;
+}
+
+.carousel::-webkit-scrollbar {
+  height: 4px;
+}
+
+.carousel::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 2px;
+}
+
+.carousel > * {
+  flex: 0 0 min(100%, 22rem);
+  scroll-snap-align: start;
+}
+
+@media (min-width: 768px) {
+  .carousel > * {
+    flex-basis: min(100%, 28rem);
+  }
+}
+
+/* ---------- Media logo marquee ---------- */
+.marquee {
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.marquee__track {
+  display: flex;
+  width: max-content;
+  gap: var(--space-8);
+  align-items: center;
+  animation: marquee-scroll 36s linear infinite;
+}
+
+.marquee:hover .marquee__track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ---------- FAQ accordion (grid-rows) ---------- */
+.faq details {
+  border-bottom: 1px solid var(--color-border);
+  padding: 0;
+}
+
+.faq summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--color-navy);
+  list-style: none;
+  padding: var(--space-4) 0;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq__content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--anim-duration-fast) var(--anim-ease);
+}
+
+.faq details[open] > .faq__content {
+  grid-template-rows: 1fr;
+}
+
+.faq__content-inner {
+  overflow: hidden;
+}
+
+.faq__content-inner p {
+  margin: 0 0 var(--space-4);
+  color: var(--color-text-muted);
+}
+
+/* ---------- Resource modal motion ---------- */
+.modal {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity var(--anim-duration-fast) var(--anim-ease),
+    visibility var(--anim-duration-fast);
+}
+
+.modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.modal[hidden]:not(.is-open) {
+  display: none !important;
+}
+
+.modal.is-open[hidden] {
+  display: grid !important;
+}
+
+.modal__panel {
+  transform: scale(0.96);
+  transition: transform var(--anim-duration-fast) var(--anim-ease);
+}
+
+.modal.is-open .modal__panel {
+  transform: scale(1);
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --anim-duration: 0.01ms;
+    --anim-duration-fast: 0.01ms;
+  }
+
+  [data-animate],
+  [data-animate="stagger"] > *,
+  [data-animate="stagger"] .stagger-item,
+  [data-hero-step],
+  .modal,
+  .modal__panel,
+  .faq__content {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  [data-animate="stagger"] {
+    opacity: 1 !important;
+  }
+
+  .marquee__track {
+    animation: none !important;
+    flex-wrap: wrap;
+    width: auto;
+    justify-content: center;
+    row-gap: var(--space-4);
+  }
+
+  .carousel {
+    scroll-behavior: auto;
+  }
+}
+

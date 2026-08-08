@@ -95,6 +95,8 @@ window.DW = window.DW || {};
   DW.initHeroEntrance = function initHeroEntrance(root = document) {
     const heroes = root.querySelectorAll("[data-hero-entrance], .hero[data-section='hero']");
     heroes.forEach((hero) => {
+      if (hero.dataset.heroAnimated === "true") return;
+      hero.dataset.heroAnimated = "true";
       const steps = hero.querySelectorAll("[data-hero-step]");
       if (!steps.length) return;
 

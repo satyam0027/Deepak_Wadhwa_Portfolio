@@ -26,4 +26,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     DW.initScrollAnimations();
     if (typeof DW.initCountUp === "function") DW.initCountUp();
   }
+
+  // Heavy media after first paint
+  if (typeof DW.initDeferredVideos === "function") {
+    DW.initDeferredVideos(document);
+  }
 });

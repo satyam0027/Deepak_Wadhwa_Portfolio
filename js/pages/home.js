@@ -2,18 +2,9 @@ window.DW = window.DW || {};
 DW.pages = DW.pages || {};
 
 DW.pages.home = async function homePage() {
-  const data = await DW.loadPageData([
-    "programs",
-    "testimonials",
-    "resources",
-    "articles",
-    "videos",
-    "media-mentions",
-    "site",
-  ]);
-
-  const site = data.site || {};
-  // No scroll-reveal on hero stats — hero entrance + count-up handle motion
+  // Site + hero first for faster first paint; rest in parallel right after
+  const siteBoot = await DW.loadPageData(["site"]);
+  const site = siteBoot.site || {};
   const statsHtml = DW.components.Stats(site.stats || [], { reveal: false });
 
   const heroHost = document.querySelector("[data-section='hero']");
@@ -28,7 +19,19 @@ DW.pages.home = async function homePage() {
       statsHtml,
       backgroundVideo: "assets/videos/hero-bg.mp4",
     });
+    if (typeof DW.initHeroEntrance === "function") DW.initHeroEntrance(document);
+    if (typeof DW.initDeferredVideos === "function") DW.initDeferredVideos(document);
+    if (typeof DW.initCountUp === "function") DW.initCountUp(document);
   }
+
+  const data = await DW.loadPageData([
+    "programs",
+    "testimonials",
+    "resources",
+    "articles",
+    "videos",
+    "media-mentions",
+  ]);
 
   const who = document.querySelector("[data-section='who']");
   if (who) {

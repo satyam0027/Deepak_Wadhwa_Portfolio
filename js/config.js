@@ -45,12 +45,6 @@ DW.config = {
   cta: { label: "JOIN / CONNECT", href: "/community/" },
 };
 
-DW.fetchData = async function fetchData(name) {
-  const res = await fetch(`${DW.config.dataPath}/${name}.json`);
-  if (!res.ok) throw new Error(`Failed to load data/${name}.json`);
-  return res.json();
-};
-
 /** Resolve site hrefs for nested pages (keeps pretty URLs on a server). */
 DW.href = function href(path) {
   if (!path || path.startsWith("http") || path.startsWith("#") || path.startsWith("mailto") || path.startsWith("tel")) {

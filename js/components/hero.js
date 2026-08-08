@@ -33,11 +33,20 @@ DW.components.Hero = function Hero(props = {}) {
     .filter(Boolean)
     .join("");
 
+  // data-src only — actual file loads after first paint via DW.initDeferredVideos
   const videoBg = backgroundVideo
     ? `
       <div class="hero__video" aria-hidden="true">
-        <video class="hero__video-el" autoplay muted loop playsinline preload="metadata">
-          <source src="${DW.href(backgroundVideo)}" type="video/mp4" />
+        <video
+          class="hero__video-el"
+          data-lazy
+          muted
+          loop
+          playsinline
+          preload="none"
+          disablePictureInPicture
+        >
+          <source data-src="${DW.href(backgroundVideo)}" type="video/mp4" />
         </video>
       </div>
     `
