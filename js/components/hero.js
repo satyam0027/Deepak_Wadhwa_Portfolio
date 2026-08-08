@@ -13,6 +13,8 @@ DW.components.Hero = function Hero(props = {}) {
     statsHtml = "",
     compact = false,
     backgroundVideo = "",
+    portrait = "",
+    portraitAlt = "",
   } = props;
 
   const resolveCtaHref = (href = "") => {
@@ -33,7 +35,6 @@ DW.components.Hero = function Hero(props = {}) {
     .filter(Boolean)
     .join("");
 
-  // data-src only — actual file loads after first paint via DW.initDeferredVideos
   const videoBg = backgroundVideo
     ? `
       <div class="hero__video" aria-hidden="true">
@@ -52,11 +53,38 @@ DW.components.Hero = function Hero(props = {}) {
     `
     : "";
 
+  const portraitSrc = portrait
+    ? portrait.startsWith("http")
+      ? portrait
+      : DW.href(portrait)
+    : "";
+
+  const portraitHtml = portraitSrc
+    ? `
+      <div class="hero__portrait" data-hero-step="3" aria-hidden="false">
+        <div class="hero__portrait-glow" aria-hidden="true"></div>
+        <div class="hero__portrait-ring">
+          <img
+            class="hero__portrait-img"
+            src="${DW.escapeHtml(portraitSrc)}"
+            alt="${DW.escapeHtml(portraitAlt || title || "")}"
+            width="480"
+            height="480"
+            decoding="async"
+            fetchpriority="high"
+          />
+        </div>
+      </div>
+    `
+    : mediaHtml
+      ? `<div class="hero__media" data-hero-step="4">${mediaHtml}</div>`
+      : "";
+
   return `
-    <section class="hero ${compact ? "hero--compact" : ""} ${backgroundVideo ? "hero--video" : ""}" data-section="hero" data-hero-entrance>
+    <section class="hero ${compact ? "hero--compact" : ""} ${backgroundVideo ? "hero--video" : ""} ${portraitSrc ? "hero--portrait" : ""}" data-section="hero" data-hero-entrance>
       ${videoBg}
       <div class="container hero__inner">
-        <div>
+        <div class="hero__copy">
           ${eyebrow ? `<p class="hero__eyebrow" data-hero-step="0">${DW.escapeHtml(eyebrow)}</p>` : ""}
           <h1 data-hero-step="1">${DW.escapeHtml(title)}</h1>
           ${tagline ? `<p class="hero__tagline" data-hero-step="2">${DW.escapeHtml(tagline)}</p>` : ""}
@@ -64,11 +92,7 @@ DW.components.Hero = function Hero(props = {}) {
           ${ctas ? `<div class="btn-group" data-hero-step="4">${ctas}</div>` : ""}
           ${statsHtml ? `<div class="hero__stats" data-hero-step="5">${statsHtml}</div>` : ""}
         </div>
-        ${
-          mediaHtml
-            ? `<div class="hero__media" data-hero-step="4">${mediaHtml}</div>`
-            : ""
-        }
+        ${portraitHtml}
       </div>
     </section>
   `;

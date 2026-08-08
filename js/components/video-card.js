@@ -4,10 +4,12 @@ DW.components = DW.components || {};
 DW.components.VideoCard = function VideoCard(video = {}) {
   const href = video.url || "#";
   const external = href.startsWith("http");
+  const thumb = video.thumbnail || "";
+  const thumbSrc = thumb.startsWith("http") ? thumb : thumb ? DW.href(thumb) : "";
   return `
     <article class="video-card stagger-item" data-source="${DW.escapeHtml(video.source || "")}">
       <a class="video-card__media" href="${href}" ${external ? 'target="_blank" rel="noopener"' : ""}>
-        ${video.thumbnail ? `<img src="${DW.href(video.thumbnail)}" alt="" />` : `<span class="card-media-label">${DW.escapeHtml(video.source || "Video")}</span>`}
+        ${thumbSrc ? `<img src="${DW.escapeHtml(thumbSrc)}" alt="" loading="lazy" decoding="async" />` : `<span class="card-media-label">${DW.escapeHtml(video.source || "Video")}</span>`}
         <span class="video-card__play" aria-hidden="true"><span class="video-card__play-icon">▶</span></span>
       </a>
       <div class="video-card__body">

@@ -5,7 +5,7 @@
       "title": "Trading Guide",
       "type": "Guide",
       "description": "A practical introduction to structured market learning — vocabulary, routines, and first principles.",
-      "thumbnail": "",
+      "thumbnail": "/assets/images/resources/trading-guide.webp",
       "fileUrl": "/assets/downloads/trading-guide.pdf",
       "gated": true,
       "featured": true
@@ -15,7 +15,7 @@
       "title": "Risk Management Guide",
       "type": "Guide",
       "description": "Position sizing, risk units, and simple rules that protect capital while you learn.",
-      "thumbnail": "",
+      "thumbnail": "/assets/images/resources/risk-management-guide.webp",
       "fileUrl": "/assets/downloads/risk-management-guide.pdf",
       "gated": true,
       "featured": true
@@ -35,7 +35,7 @@
       "title": "Weekly Review Checklist",
       "type": "Checklist",
       "description": "A one-page checklist to close your learning week with clarity.",
-      "thumbnail": "",
+      "thumbnail": "/assets/images/resources/weekly-review-checklist.webp",
       "fileUrl": "/assets/downloads/checklist.pdf",
       "gated": true,
       "featured": true

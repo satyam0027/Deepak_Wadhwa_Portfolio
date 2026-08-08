@@ -5,10 +5,16 @@ DW.components.ProgramCard = function ProgramCard(program = {}) {
   const href = program.comingSoon ? "#" : DW.href(program.href || `/programs/${program.slug}/`);
   const cta = program.comingSoon ? "Coming Soon" : "View Program";
   const initial = (program.title || "P").charAt(0);
+  const image = program.image || "";
+  const imageSrc = image.startsWith("http") ? image : image ? DW.href(image) : "";
+
+  const media = imageSrc
+    ? `<div class="program-card__media"><img src="${DW.escapeHtml(imageSrc)}" alt="${DW.escapeHtml(program.title || "")}" loading="lazy" decoding="async" /></div>`
+    : `<div class="program-card__icon" aria-hidden="true">${DW.escapeHtml(initial)}</div>`;
 
   return `
     <article class="program-card stagger-item" data-level="${DW.escapeHtml((program.levels || [program.level]).join(","))}">
-      <div class="program-card__icon" aria-hidden="true">${DW.escapeHtml(initial)}</div>
+      ${media}
       <div>
         <span class="tag tag--gold">${DW.escapeHtml(program.level || "All Levels")}</span>
       </div>

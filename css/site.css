@@ -579,6 +579,88 @@ body.nav-open {
   overflow: hidden;
 }
 
+/* Circular portrait merge into hero / video background */
+.hero__portrait {
+  position: relative;
+  justify-self: center;
+  width: min(78vw, 22rem);
+  aspect-ratio: 1;
+  z-index: 2;
+}
+
+.hero__portrait-glow {
+  position: absolute;
+  inset: -8%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(184, 146, 42, 0.35) 0%, transparent 55%),
+    radial-gradient(circle at 50% 50%, rgba(11, 31, 58, 0.15) 40%, transparent 70%);
+  filter: blur(6px);
+  pointer-events: none;
+}
+
+.hero__portrait-ring {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  padding: 3px;
+  background:
+    linear-gradient(145deg, rgba(212, 180, 90, 0.85), rgba(11, 31, 58, 0.2) 45%, rgba(184, 146, 42, 0.55));
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 24px 48px rgba(6, 21, 37, 0.35);
+}
+
+.hero__portrait-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+  border-radius: 50%;
+  /* Soft circular merge — edges dissolve into hero atmosphere */
+  -webkit-mask-image: radial-gradient(circle at 50% 46%, #000 58%, transparent 76%);
+  mask-image: radial-gradient(circle at 50% 46%, #000 58%, transparent 76%);
+}
+
+.hero--portrait .hero__copy {
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 899px) {
+  .hero--portrait .hero__inner {
+    justify-items: center;
+    text-align: center;
+  }
+
+  .hero--portrait .hero__lead {
+    margin-inline: auto;
+  }
+
+  .hero--portrait .btn-group {
+    justify-content: center;
+  }
+
+  .hero--portrait .hero__portrait {
+    order: -1;
+    width: min(62vw, 16rem);
+    margin-bottom: var(--space-2);
+  }
+
+  .hero--portrait h1 {
+    max-width: none;
+  }
+}
+
+@media (min-width: 900px) {
+  .hero--portrait .hero__portrait {
+    width: min(36vw, 26rem);
+    justify-self: end;
+  }
+}
+
 .hero .btn--ghost {
   color: var(--color-white);
   border-color: rgba(255, 255, 255, 0.55);
@@ -759,6 +841,20 @@ body.nav-open {
   color: var(--color-navy);
   font-family: var(--font-display);
   font-weight: 700;
+}
+
+.program-card__media {
+  aspect-ratio: 16 / 10;
+  margin: calc(var(--space-5) * -1) calc(var(--space-5) * -1) 0;
+  width: calc(100% + var(--space-5) * 2);
+  overflow: hidden;
+  background: var(--color-navy);
+}
+
+.program-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .program-card h3 {
@@ -1386,11 +1482,11 @@ body.nav-open {
   }
 }
 
-/* ---------- Media logo marquee ---------- */
+/* ---------- Media logo / card marquee ---------- */
 .marquee {
   overflow: hidden;
   position: relative;
-  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
 }
 
 .marquee__track {
@@ -1399,10 +1495,39 @@ body.nav-open {
   gap: var(--space-8);
   align-items: center;
   animation: marquee-scroll 36s linear infinite;
+  will-change: transform;
 }
 
-.marquee:hover .marquee__track {
+.marquee:hover .marquee__track,
+.marquee:focus-within .marquee__track {
   animation-play-state: paused;
+}
+
+/* Results testimonials — slower, card-sized */
+.marquee--cards {
+  margin-top: var(--space-2);
+}
+
+.marquee--cards .marquee__track {
+  gap: var(--space-5);
+  align-items: stretch;
+  animation-duration: 48s;
+}
+
+.marquee--cards .testimonial-card {
+  flex: 0 0 min(85vw, 22rem);
+  width: min(85vw, 22rem);
+  max-width: min(85vw, 22rem);
+  height: auto;
+  min-height: 100%;
+}
+
+@media (min-width: 768px) {
+  .marquee--cards .testimonial-card {
+    flex-basis: 26rem;
+    width: 26rem;
+    max-width: 26rem;
+  }
 }
 
 @keyframes marquee-scroll {
@@ -1511,8 +1636,29 @@ body.nav-open {
     animation: none !important;
     flex-wrap: wrap;
     width: auto;
+    max-width: var(--container);
+    margin-inline: auto;
     justify-content: center;
     row-gap: var(--space-4);
+    padding-inline: 1rem;
+  }
+
+  .marquee--cards .marquee__track {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: min(100% - 2rem, var(--container));
+  }
+
+  @media (min-width: 768px) {
+    .marquee--cards .marquee__track {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .marquee--cards .testimonial-card {
+    width: 100%;
+    max-width: none;
+    flex: none;
   }
 
   .carousel {

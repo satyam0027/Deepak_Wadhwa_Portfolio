@@ -6,7 +6,7 @@ DW.components.ArticleCard = function ArticleCard(article = {}) {
   return `
     <article class="article-card stagger-item" data-category="${DW.escapeHtml(article.category || "")}">
       <a href="${href}" class="article-card__media" tabindex="-1" aria-hidden="true">
-        ${article.thumbnail ? `<img src="${DW.href(article.thumbnail)}" alt="" />` : `<span class="card-media-label">${DW.escapeHtml(article.category || "Insight")}</span>`}
+        ${article.thumbnail ? `<img src="${article.thumbnail.startsWith("http") ? DW.escapeHtml(article.thumbnail) : DW.href(article.thumbnail)}" alt="${DW.escapeHtml(article.title || "")}" loading="lazy" decoding="async" />` : `<span class="card-media-label">${DW.escapeHtml(article.category || "Insight")}</span>`}
       </a>
       <div class="article-card__body">
         <span class="tag">${DW.escapeHtml(article.category || "Insight")}</span>

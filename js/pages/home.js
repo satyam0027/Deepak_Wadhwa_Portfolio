@@ -18,6 +18,8 @@ DW.pages.home = async function homePage() {
       secondaryCta: { label: "Watch Introduction", href: "/media/" },
       statsHtml,
       backgroundVideo: "assets/videos/hero-bg.mp4",
+      portrait: "assets/images/deepak-wadhwa-portrait.webp",
+      portraitAlt: "Deepak Wadhwa",
     });
     if (typeof DW.initHeroEntrance === "function") DW.initHeroEntrance(document);
     if (typeof DW.initDeferredVideos === "function") DW.initDeferredVideos(document);
@@ -100,6 +102,9 @@ DW.pages.home = async function homePage() {
   if (results) {
     results.className = "section section--soft";
     const stories = data.testimonials?.testimonials || [];
+    // Duplicate once in markup if few cards so the loop feels continuous
+    const cards = stories.map(DW.components.TestimonialCard).join("");
+    const track = stories.length < 4 ? cards + cards : cards;
     results.innerHTML = `
       <div class="container">
         ${DW.components.SectionHeader({
@@ -107,11 +112,16 @@ DW.pages.home = async function homePage() {
           title: "Student & client learning journeys",
           subheading: "Case studies framed as Before → Learning → After — not hype quotes.",
         })}
-        <div class="carousel" data-carousel data-animate="fade-up">
-          ${stories.map(DW.components.TestimonialCard).join("")}
+      </div>
+      <div class="marquee marquee--cards" data-marquee data-animate="fade-up">
+        <div class="marquee__track" data-marquee-track>
+          ${track}
         </div>
+      </div>
+      <div class="container">
         <div style="margin-top:var(--space-6)" data-animate="fade-up"><a class="btn btn--ghost" href="${DW.href("/success-stories/")}">Success stories</a></div>
       </div>`;
+    if (typeof DW.initMarquees === "function") DW.initMarquees(results);
   }
 
   const resources = document.querySelector("[data-section='resources']");

@@ -428,6 +428,8 @@ DW.components.Hero = function Hero(props = {}) {
     statsHtml = "",
     compact = false,
     backgroundVideo = "",
+    portrait = "",
+    portraitAlt = "",
   } = props;
 
   const resolveCtaHref = (href = "") => {
@@ -448,7 +450,6 @@ DW.components.Hero = function Hero(props = {}) {
     .filter(Boolean)
     .join("");
 
-  // data-src only — actual file loads after first paint via DW.initDeferredVideos
   const videoBg = backgroundVideo
     ? `
       <div class="hero__video" aria-hidden="true">
@@ -467,11 +468,38 @@ DW.components.Hero = function Hero(props = {}) {
     `
     : "";
 
+  const portraitSrc = portrait
+    ? portrait.startsWith("http")
+      ? portrait
+      : DW.href(portrait)
+    : "";
+
+  const portraitHtml = portraitSrc
+    ? `
+      <div class="hero__portrait" data-hero-step="3" aria-hidden="false">
+        <div class="hero__portrait-glow" aria-hidden="true"></div>
+        <div class="hero__portrait-ring">
+          <img
+            class="hero__portrait-img"
+            src="${DW.escapeHtml(portraitSrc)}"
+            alt="${DW.escapeHtml(portraitAlt || title || "")}"
+            width="480"
+            height="480"
+            decoding="async"
+            fetchpriority="high"
+          />
+        </div>
+      </div>
+    `
+    : mediaHtml
+      ? `<div class="hero__media" data-hero-step="4">${mediaHtml}</div>`
+      : "";
+
   return `
-    <section class="hero ${compact ? "hero--compact" : ""} ${backgroundVideo ? "hero--video" : ""}" data-section="hero" data-hero-entrance>
+    <section class="hero ${compact ? "hero--compact" : ""} ${backgroundVideo ? "hero--video" : ""} ${portraitSrc ? "hero--portrait" : ""}" data-section="hero" data-hero-entrance>
       ${videoBg}
       <div class="container hero__inner">
-        <div>
+        <div class="hero__copy">
           ${eyebrow ? `<p class="hero__eyebrow" data-hero-step="0">${DW.escapeHtml(eyebrow)}</p>` : ""}
           <h1 data-hero-step="1">${DW.escapeHtml(title)}</h1>
           ${tagline ? `<p class="hero__tagline" data-hero-step="2">${DW.escapeHtml(tagline)}</p>` : ""}
@@ -479,11 +507,7 @@ DW.components.Hero = function Hero(props = {}) {
           ${ctas ? `<div class="btn-group" data-hero-step="4">${ctas}</div>` : ""}
           ${statsHtml ? `<div class="hero__stats" data-hero-step="5">${statsHtml}</div>` : ""}
         </div>
-        ${
-          mediaHtml
-            ? `<div class="hero__media" data-hero-step="4">${mediaHtml}</div>`
-            : ""
-        }
+        ${portraitHtml}
       </div>
     </section>
   `;
@@ -543,10 +567,16 @@ DW.components.ProgramCard = function ProgramCard(program = {}) {
   const href = program.comingSoon ? "#" : DW.href(program.href || `/programs/${program.slug}/`);
   const cta = program.comingSoon ? "Coming Soon" : "View Program";
   const initial = (program.title || "P").charAt(0);
+  const image = program.image || "";
+  const imageSrc = image.startsWith("http") ? image : image ? DW.href(image) : "";
+
+  const media = imageSrc
+    ? `<div class="program-card__media"><img src="${DW.escapeHtml(imageSrc)}" alt="${DW.escapeHtml(program.title || "")}" loading="lazy" decoding="async" /></div>`
+    : `<div class="program-card__icon" aria-hidden="true">${DW.escapeHtml(initial)}</div>`;
 
   return `
     <article class="program-card stagger-item" data-level="${DW.escapeHtml((program.levels || [program.level]).join(","))}">
-      <div class="program-card__icon" aria-hidden="true">${DW.escapeHtml(initial)}</div>
+      ${media}
       <div>
         <span class="tag tag--gold">${DW.escapeHtml(program.level || "All Levels")}</span>
       </div>
@@ -616,7 +646,7 @@ DW.components.ArticleCard = function ArticleCard(article = {}) {
   return `
     <article class="article-card stagger-item" data-category="${DW.escapeHtml(article.category || "")}">
       <a href="${href}" class="article-card__media" tabindex="-1" aria-hidden="true">
-        ${article.thumbnail ? `<img src="${DW.href(article.thumbnail)}" alt="" />` : `<span class="card-media-label">${DW.escapeHtml(article.category || "Insight")}</span>`}
+        ${article.thumbnail ? `<img src="${article.thumbnail.startsWith("http") ? DW.escapeHtml(article.thumbnail) : DW.href(article.thumbnail)}" alt="${DW.escapeHtml(article.title || "")}" loading="lazy" decoding="async" />` : `<span class="card-media-label">${DW.escapeHtml(article.category || "Insight")}</span>`}
       </a>
       <div class="article-card__body">
         <span class="tag">${DW.escapeHtml(article.category || "Insight")}</span>
@@ -636,10 +666,12 @@ DW.components = DW.components || {};
 DW.components.VideoCard = function VideoCard(video = {}) {
   const href = video.url || "#";
   const external = href.startsWith("http");
+  const thumb = video.thumbnail || "";
+  const thumbSrc = thumb.startsWith("http") ? thumb : thumb ? DW.href(thumb) : "";
   return `
     <article class="video-card stagger-item" data-source="${DW.escapeHtml(video.source || "")}">
       <a class="video-card__media" href="${href}" ${external ? 'target="_blank" rel="noopener"' : ""}>
-        ${video.thumbnail ? `<img src="${DW.href(video.thumbnail)}" alt="" />` : `<span class="card-media-label">${DW.escapeHtml(video.source || "Video")}</span>`}
+        ${thumbSrc ? `<img src="${DW.escapeHtml(thumbSrc)}" alt="" loading="lazy" decoding="async" />` : `<span class="card-media-label">${DW.escapeHtml(video.source || "Video")}</span>`}
         <span class="video-card__play" aria-hidden="true"><span class="video-card__play-icon">▶</span></span>
       </a>
       <div class="video-card__body">
@@ -1053,7 +1085,7 @@ DW.components.ResourceCard = function ResourceCard(resource = {}) {
   return `
     <article class="resource-card stagger-item">
       <div class="resource-card__media">
-        ${resource.thumbnail ? `<img src="${DW.href(resource.thumbnail)}" alt="" />` : `<span class="card-media-label">${DW.escapeHtml(resource.type || "Resource")}</span>`}
+        ${resource.thumbnail ? `<img src="${resource.thumbnail.startsWith("http") ? DW.escapeHtml(resource.thumbnail) : DW.href(resource.thumbnail)}" alt="${DW.escapeHtml(resource.title || "")}" loading="lazy" decoding="async" />` : `<span class="card-media-label">${DW.escapeHtml(resource.type || "Resource")}</span>`}
       </div>
       <div class="resource-card__body">
         <span class="tag">${DW.escapeHtml(resource.type || "Resource")}</span>

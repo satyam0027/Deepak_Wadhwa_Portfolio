@@ -2,37 +2,37 @@
   "sources": ["YouTube", "Podcast", "Interview", "TV", "Webinar"],
   "videos": [
     {
-      "id": "video-001",
-      "title": "Introduction to Financial Education with Deepak Wadhwa",
-      "thumbnail": "",
-      "url": "#",
+      "id": "px-EeTsIbBk",
+      "title": "Option Buying Secrets Revealed! The Strategy Top 1% Traders Use | Kshitij Gandhi",
+      "thumbnail": "https://img.youtube.com/vi/px-EeTsIbBk/hqdefault.jpg",
+      "url": "https://youtu.be/px-EeTsIbBk",
       "source": "YouTube",
-      "duration": "12:00",
-      "date": "2026-07-15",
+      "duration": "",
+      "date": "2026-08-01",
       "featured": true,
-      "description": "A calm introduction to how Deepak approaches market education."
+      "description": "Educational session on option buying frameworks and disciplined approach."
     },
     {
-      "id": "video-002",
-      "title": "Podcast: Learning markets without the noise",
-      "thumbnail": "",
-      "url": "#",
-      "source": "Podcast",
-      "duration": "45:00",
-      "date": "2026-06-01",
+      "id": "CerMhWLT1Cc",
+      "title": "Invest in US stocks — save taxes",
+      "thumbnail": "https://img.youtube.com/vi/CerMhWLT1Cc/hqdefault.jpg",
+      "url": "https://youtu.be/CerMhWLT1Cc",
+      "source": "YouTube",
+      "duration": "",
+      "date": "2026-07-20",
       "featured": false,
-      "description": "A conversation on process, patience, and practical learning."
+      "description": "Conversation on US equities and tax-aware investing education."
     },
     {
-      "id": "video-003",
-      "title": "Webinar recap: Risk awareness for new learners",
-      "thumbnail": "",
-      "url": "#",
-      "source": "Webinar",
-      "duration": "38:00",
-      "date": "2026-05-20",
+      "id": "JgkIfWzWkvU",
+      "title": "Fundamental Analysis of Stocks in Hindi | Full Course | ZERO 2 HERO TRADER | EP.05",
+      "thumbnail": "https://img.youtube.com/vi/JgkIfWzWkvU/hqdefault.jpg",
+      "url": "https://youtu.be/JgkIfWzWkvU",
+      "source": "YouTube",
+      "duration": "",
+      "date": "2026-07-05",
       "featured": false,
-      "description": "Key ideas from a live educational session on risk."
+      "description": "Foundational stock analysis education in Hindi."
     }
   ]
 }

@@ -8,7 +8,7 @@ DW.components.ResourceCard = function ResourceCard(resource = {}) {
   return `
     <article class="resource-card stagger-item">
       <div class="resource-card__media">
-        ${resource.thumbnail ? `<img src="${DW.href(resource.thumbnail)}" alt="" />` : `<span class="card-media-label">${DW.escapeHtml(resource.type || "Resource")}</span>`}
+        ${resource.thumbnail ? `<img src="${resource.thumbnail.startsWith("http") ? DW.escapeHtml(resource.thumbnail) : DW.href(resource.thumbnail)}" alt="${DW.escapeHtml(resource.title || "")}" loading="lazy" decoding="async" />` : `<span class="card-media-label">${DW.escapeHtml(resource.type || "Resource")}</span>`}
       </div>
       <div class="resource-card__body">
         <span class="tag">${DW.escapeHtml(resource.type || "Resource")}</span>
